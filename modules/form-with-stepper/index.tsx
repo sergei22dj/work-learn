@@ -53,6 +53,15 @@ const FormWStepper = () => {
     );
     setInputList(values);
   };
+  const messagesEndRef = React.useRef(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  React.useEffect(() => {
+    scrollToBottom();
+  }, [inputList]);
 
   return (
     <Wrapper>
@@ -60,7 +69,7 @@ const FormWStepper = () => {
         {inputList.map((inputItem, index) => (
           <ItemBlockWrapper>
             <InputWrapper>
-              (input : {inputItem.id})<InputName>NAME :</InputName>
+              (block : {inputItem.id})<InputName>NAME :</InputName>
               <InputForm name='name' value={inputItem.name} onChange={(e) => handleChangeInput(index, e)} />
               <InputName>LASTNAME :</InputName>
               <InputForm name='lastname' value={inputItem.lastname} onChange={(e) => handleChangeInput(index, e)} />
@@ -81,12 +90,13 @@ const FormWStepper = () => {
         ))}
       </FormSWrapper>
       <ButtonsWrapper>
-        <Button onClick={addInputItem}>add input</Button>
+        <Button onClick={addInputItem}>add form</Button>
         <Button onClick={handleSubmit}>see on console</Button>
         <Button onClick={() => setModalActive(true)}>see on modal :)</Button>
       </ButtonsWrapper>
 
       <Modal list={inputList} active={modalActive} setActive={setModalActive} />
+      <div ref={messagesEndRef} />
     </Wrapper>
   );
 };
