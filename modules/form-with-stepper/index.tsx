@@ -1,8 +1,19 @@
+import Modal from '@md-modules/modal';
 import React, { useState } from 'react';
 import { ReactReduxContextValue } from 'react-redux';
-import { Button, FormSWrapper, InputForm, InputName, InputWrapper, ItemBlockWrapper, Select, Wrapper } from './views';
+import {
+  Button,
+  ButtonsWrapper,
+  FormSWrapper,
+  InputForm,
+  InputName,
+  InputWrapper,
+  ItemBlockWrapper,
+  Select,
+  Wrapper
+} from './views';
 
-interface InputList {
+export interface InputList {
   id: number;
   name: string;
   lastname: string;
@@ -10,6 +21,8 @@ interface InputList {
 }
 
 const FormWStepper = () => {
+  const [modalActive, setModalActive] = useState(false);
+  console.log(modalActive);
   const [inputList, setInputList] = useState<InputList[]>([
     { id: 1, name: 'Leha', lastname: 'Buhayov', orientation: 'Nefar' }
   ]);
@@ -29,7 +42,7 @@ const FormWStepper = () => {
   };
 
   const addInputItem = () => {
-    setInputList([...inputList, { id: inputList.length + 1, name: '', lastname: '', orientation: '' }]);
+    setInputList([...inputList, { id: inputList.length + 1, name: '', lastname: '', orientation: 'Natural' }]);
   };
 
   const deleteInputItem = (id: number) => {
@@ -67,8 +80,13 @@ const FormWStepper = () => {
           </ItemBlockWrapper>
         ))}
       </FormSWrapper>
-      <Button onClick={addInputItem}>add input</Button>
-      <Button onClick={handleSubmit}>send</Button>
+      <ButtonsWrapper>
+        <Button onClick={addInputItem}>add input</Button>
+        <Button onClick={handleSubmit}>see on console</Button>
+        <Button onClick={() => setModalActive(true)}>see on modal :)</Button>
+      </ButtonsWrapper>
+
+      <Modal list={inputList} active={modalActive} setActive={setModalActive} />
     </Wrapper>
   );
 };

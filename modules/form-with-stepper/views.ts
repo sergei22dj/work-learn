@@ -14,12 +14,16 @@ export const FormSWrapper = styled.form`
   color: white;
 `;
 export const InputForm = styled.input`
+    border-radius: 20px;
     padding: 0 10px;
     width: 100%;
-    color: #64c1dd;
+    color: #ffffff;
+    background-color: #a400ff;
     height: 50px;
+    text-align: center;
     margin: 20px 0;
     font-size: 24px;
+    box-shadow: inset 0 0 50px 1px black;
 `;
 export const InputWrapper = styled.div`
     display: flex;
@@ -28,7 +32,9 @@ export const InputWrapper = styled.div`
 export const Button = styled.button`
     display: flex;
     height: 60px;
-    background-color: #b0a4e5;
+    color: white;
+    background-color: #a400ff;
+    box-shadow: inset 0 0 50px 1px black;
     display: flex;
     align-items: center;
     font-size: 20px;
@@ -36,10 +42,13 @@ export const Button = styled.button`
     margin: 10px 10px;
     justify-content: center;
     width: 20%;
+    border: 0.5px solid black;
     cursor: pointer;
 
     &:hover {
-        color: white;
+        color: black;
+        box-shadow: inset 0 0 10px 1px black;
+        border: 0.5px solid white;
         
         
       }
@@ -55,15 +64,24 @@ export const ItemBlockWrapper = styled.div`
     margin-bottom: 40px; 
 `;
 export const Select = styled.select`
+    border-radius: 20px;
     padding: 0 10px;
     width: 100%;
-    color: #64c1dd;
+    color: #ffffff;
+    background-color: #a400ff;
     height: 50px;
+    text-align: center;
     margin: 20px 0;
     font-size: 24px;
+    box-shadow: inset 0 0 50px 1px black;
 `;
 export const InputName = styled.p`
 margin: 10px 0 0 0;
 color: #a414ed;;
 font-size: 20px;
+`;
+export const ButtonsWrapper = styled.div`
+width: 100%;
+display: flex;
+justify-content: center;
 `;
