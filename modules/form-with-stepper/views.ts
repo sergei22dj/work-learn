@@ -1,5 +1,11 @@
 import styled from 'styled-components';
 
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+`;
 export const FormSWrapper = styled.form`
   display: flex;
   flex-direction: column;
@@ -10,7 +16,7 @@ export const FormSWrapper = styled.form`
 export const InputForm = styled.input`
     padding: 0 10px;
     width: 100%;
-    color: violet;
+    color: #64c1dd;
     height: 50px;
     margin: 20px 0;
     font-size: 24px;
@@ -22,7 +28,7 @@ export const InputWrapper = styled.div`
 export const Button = styled.button`
     display: flex;
     height: 60px;
-    background-color: violet;
+    background-color: #b0a4e5;
     display: flex;
     align-items: center;
     font-size: 20px;
@@ -47,4 +53,17 @@ export const ItemBlockWrapper = styled.div`
     align-items: center;
     justify-content: center;
     margin-bottom: 40px; 
+`;
+export const Select = styled.select`
+    padding: 0 10px;
+    width: 100%;
+    color: #64c1dd;
+    height: 50px;
+    margin: 20px 0;
+    font-size: 24px;
+`;
+export const InputName = styled.p`
+margin: 10px 0 0 0;
+color: #a414ed;;
+font-size: 20px;
 `;
