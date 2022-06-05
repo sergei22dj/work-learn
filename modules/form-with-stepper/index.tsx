@@ -23,9 +23,7 @@ export interface InputList {
 const FormWStepper = () => {
   const [modalActive, setModalActive] = useState(false);
   console.log(modalActive);
-  const [inputList, setInputList] = useState<InputList[]>([
-    { id: 1, name: 'Leha', lastname: 'Buhayov', orientation: 'Nefar' }
-  ]);
+  const [inputList, setInputList] = useState<InputList[]>([]);
 
   const handleChangeInput = (
     index: number,
@@ -80,9 +78,11 @@ const FormWStepper = () => {
                 value={inputItem.orientation}
                 onChange={(e) => handleChangeInput(index, e)}
               >
-                <option>Natural</option>
-                <option>Gomik</option>
+                <option>Natooral</option>
+                <option>Гomik</option>
+                <option>Lox</option>
                 <option>Nefar</option>
+                <option>БbIДLo</option>
               </Select>
             </InputWrapper>
             <Button onClick={() => deleteInputItem(inputItem.id)}>delete</Button>
