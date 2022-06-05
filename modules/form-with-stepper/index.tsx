@@ -10,7 +10,9 @@ interface InputList {
 }
 
 const FormWStepper = () => {
-  const [inputList, setInputList] = useState<InputList[]>([{ id: 1, name: '', lastname: '', orientation: '' }]);
+  const [inputList, setInputList] = useState<InputList[]>([
+    { id: 1, name: 'Leha', lastname: 'Buhayov', orientation: 'Nefar' }
+  ]);
 
   const handleChangeInput = (
     index: number,
