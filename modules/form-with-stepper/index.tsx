@@ -14,6 +14,7 @@ import {
 } from './views';
 
 export interface InputList {
+  [key: string]: string | number;
   id: number;
   name: string;
   lastname: string;
@@ -33,7 +34,7 @@ const FormWStepper = () => {
     setInputList(values);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     // eslint-disable-next-line no-console
     console.log('Дані про користувачів : ', inputList);
