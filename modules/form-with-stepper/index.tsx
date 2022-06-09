@@ -1,6 +1,6 @@
 import Modal from '@md-modules/modal';
-import React, { useState } from 'react';
-import { ReactReduxContextValue } from 'react-redux';
+import React from 'react';
+// views
 import {
   Button,
   ButtonsWrapper,
@@ -21,9 +21,8 @@ export interface InputList {
 }
 
 const FormWStepper = () => {
-  const [modalActive, setModalActive] = useState(false);
-  console.log(modalActive);
-  const [inputList, setInputList] = useState<InputList[]>([]);
+  const [modalActive, setModalActive] = React.useState(false);
+  const [inputList, setInputList] = React.useState<InputList[]>([]);
 
   const handleChangeInput = (
     index: number,
@@ -36,6 +35,7 @@ const FormWStepper = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // eslint-disable-next-line no-console
     console.log('Дані про користувачів : ', inputList);
   };
 
@@ -51,7 +51,9 @@ const FormWStepper = () => {
     );
     setInputList(values);
   };
-  const messagesEndRef = React.useRef(null);
+
+  // scroll bottom
+  const messagesEndRef = React.useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -60,12 +62,13 @@ const FormWStepper = () => {
   React.useEffect(() => {
     scrollToBottom();
   }, [inputList]);
+  // -------------
 
   return (
     <Wrapper>
       <FormSWrapper onSubmit={handleSubmit}>
         {inputList.map((inputItem, index) => (
-          <ItemBlockWrapper>
+          <ItemBlockWrapper key={index}>
             <InputWrapper>
               (block : {inputItem.id})<InputName>NAME :</InputName>
               <InputForm name='name' value={inputItem.name} onChange={(e) => handleChangeInput(index, e)} />

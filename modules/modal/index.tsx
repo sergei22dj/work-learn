@@ -1,28 +1,27 @@
 import { InputList } from '@md-modules/form-with-stepper';
-import m from './views.module.css';
 import React, { FC } from 'react';
-import { P, WrapperModal } from './views';
+import { Content, GradientBorder, Text, Wrapper } from './views';
 
-interface Modal {
+interface Props {
   list: InputList[];
   active: boolean;
   setActive: (arg: boolean) => void;
 }
 
-const Modal: FC<Modal> = ({ list, active, setActive }) => {
+const Modal: FC<Props> = ({ list, active, setActive }) => {
   return (
-    <div className={active ? m.wrapperActive : m.wrapper} onClick={() => setActive(false)}>
-      <div className={active ? m.contentActive : m.content} onClick={(e) => e.stopPropagation()}>
-        {list.map((item) => (
-          <div className={m.gradientBorder}>
-            <P>Чел номер {item.id}</P>
-            <P>This чела зовут: {item.name}</P>
-            <P>По жизни he is : {item.orientation}</P>
-            <P>Его сёрнейм is : {item.lastname}</P>
-          </div>
+    <Wrapper activeModal={active} onClick={() => setActive(false)}>
+      <Content activeModal={active} onClick={(e) => e.stopPropagation()}>
+        {list.map((item, index) => (
+          <GradientBorder key={index}>
+            <Text>Чел номер {item.id}</Text>
+            <Text>This чела зовут: {item.name}</Text>
+            <Text>По жизни he is : {item.orientation}</Text>
+            <Text>Его сёрнейм is : {item.lastname}</Text>
+          </GradientBorder>
         ))}
-      </div>
-    </div>
+      </Content>
+    </Wrapper>
   );
 };
 export default Modal;

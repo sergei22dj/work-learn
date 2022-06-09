@@ -1,6 +1,4 @@
 import * as React from 'react';
-// hooks
-import { useRouter } from 'next/router';
 // types
 import { Tab } from '@md-shared/layouts/main';
 // constants
@@ -18,8 +16,6 @@ interface Props {
 }
 
 const Header: React.FC<Props> = ({ childrenTabs, activeTab, setActiveTab }) => {
-  const router = useRouter();
-
   return (
     <Wrapper>
       <IWrapper>
