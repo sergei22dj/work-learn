@@ -18,7 +18,7 @@ export const UserListWrapper = styled.div`
   align-items: center;
   font-size: 24px;
   color: white;
-  width: 350px;
+  width: 400px;
 `;
 export const ControlPanel = styled.div`
   display: flex;
@@ -43,11 +43,43 @@ export const ControlItem = styled.div`
     background-color: #7fc7f1;
   }
 `;
+export const ActionBar = styled.div`
+  display: flex;
+`;
+export const Description = styled.div`
+  display: none;
+`;
+export const Info = styled.div`
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: gray;
+  border-radius: 50px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+
+  &:active ${Description} {
+    display: block;
+    border-radius: 16px;
+    padding: 25px;
+    margin-left: 200px;
+    width: 100%;
+    height: 150px;
+    background-color: black;
+    opacity: 0.9;
+    position: absolute;
+    z-index: 9999;
+  }
+`;
 export const UserItem = styled.div`
   display: flex;
+  justify-content: space-between;
   margin: 20px 0;
   border-bottom: 1px solid white;
 `;
+
 export const DeleteButton = styled.div`
   display: flex;
   width: 50px;

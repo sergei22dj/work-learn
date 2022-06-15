@@ -29,6 +29,7 @@ export const WrapperActive = styled.div`
   transition: 0.5s;
 `;
 export const Content = styled.div<{ activeModal: boolean }>`
+  width: 100%;
   border-radius: 12px;
   padding: 20px;
   display: flex;
@@ -82,7 +83,7 @@ export const WrapperModal = styled.div`
 export const GradientBorder = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   color: rgb(163, 38, 38);
   font-family: 'Raleway';
