@@ -38,8 +38,7 @@ const RHForm = () => {
     formState: { errors },
     control
   } = useForm<IForm>({
-    resolver: yupResolver(schema),
-    defaultValues: { form: [{ email: '', name: '', phone: '' }] }
+    resolver: yupResolver(schema)
   });
 
   const { fields, append, remove } = useFieldArray<IForm>({
@@ -54,7 +53,7 @@ const RHForm = () => {
   };
 
   const modalActivated = () => {
-    errors.form ? setModalActive(false) : setModalActive(true);
+    setModalActive(!errors.form);
     setTimeout(() => setModalActive(false), 4000);
   };
 
@@ -64,7 +63,7 @@ const RHForm = () => {
         {fields.map((field, index) => {
           return (
             <InputWrapper key={field.id}>
-              <Input placeholder='name' {...register(`form.${index}.name` as const, { required: false })} />
+              <Input placeholder='name' {...register(`form.${index}.name`)} />
               <ErrorText>{errors?.form?.[index]?.name?.message}</ErrorText>
               <Input placeholder='e-mail' {...register(`form.${index}.email`)} />
               <ErrorText>{errors?.form?.[index]?.email?.message}</ErrorText>
