@@ -15,6 +15,8 @@ import { useApollo } from '../lib/apolloClient';
 import { cookiesManager } from '@md-managers/cookies';
 // global css
 import 'normalize.css/normalize.css';
+import { Provider } from 'react-redux';
+import { store } from 'redux-store';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   const { getToken } = cookiesManager();
@@ -31,7 +33,9 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       </Head>
       <ThemeProvider theme={theme}>
         <ApolloProvider client={apolloClient}>
-          <Component {...pageProps} />
+          <Provider store={store}>
+            <Component {...pageProps} />
+          </Provider>
         </ApolloProvider>
       </ThemeProvider>
       <GlobalStyles />

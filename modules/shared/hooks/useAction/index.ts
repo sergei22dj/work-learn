@@ -1,8 +1,8 @@
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import ActionCreators from '../redux-store/action-creators/';
+import actionCreators from 'redux-store/action-creators';
 
 export const useActions = () => {
   const dispatch = useDispatch();
-  return bindActionCreators(ActionCreators, dispatch);
+  return bindActionCreators(actionCreators, dispatch);
 };

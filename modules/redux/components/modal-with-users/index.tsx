@@ -1,7 +1,10 @@
-import { useActions } from '@md-modules/redux/hooks/useAction';
-import { useTypeSelector } from '@md-modules/redux/hooks/useTypeSelector';
 import React from 'react';
+// hooks
+import { useActions } from '@md-modules/shared/hooks/useAction';
+import { useTypeSelector } from '@md-modules/shared/hooks/useTypeSelector';
+// components
 import UserList from '../user-list';
+// views
 import { Content, GradientBorder, Wrapper } from './views';
 
 const ModalWUsers = () => {

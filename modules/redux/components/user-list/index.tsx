@@ -1,8 +1,8 @@
-import { useActions } from '@md-modules/redux/hooks/useAction';
-import { useTypeSelector } from '@md-modules/redux/hooks/useTypeSelector';
-import LoaderEllepsis from '@md-modules/shared/loaders/elepsis';
-import LoaderSpinner from '@md-modules/shared/loaders/spiner';
 import React, { useEffect } from 'react';
+// hooks
+import { useActions } from '@md-modules/shared/hooks/useAction';
+import { useTypeSelector } from '@md-modules/shared/hooks/useTypeSelector';
+// views
 import {
   ActionBar,
   ControlItem,
@@ -15,6 +15,9 @@ import {
   UserListWrapper,
   Wrapper
 } from './views';
+// loaders
+import LoaderEllepsis from '@md-modules/shared/loaders/elepsis';
+import LoaderSpinner from '@md-modules/shared/loaders/spiner';
 
 const UserList: React.FC = () => {
   const { loading, users } = useTypeSelector((state) => state.user);
@@ -47,7 +50,12 @@ const UserList: React.FC = () => {
                     <Info>
                       ?
                       <Description>
-                        email - {user.email}; <br /> phone - {user.phone}; <br /> city - {user.address.city} <br />{' '}
+                        email - {user.email};
+                        <br />
+                        phone - {user.phone};
+                        <br />
+                        city - {user.address.city}
+                        <br />
                         street - {user.address.street};
                       </Description>
                     </Info>
