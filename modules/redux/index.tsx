@@ -1,12 +1,14 @@
 import ModalWUsers from './components/modal-with-users';
 import TodoList from './components/todo-list';
 
+//
+// <hr />
+// <TodoList />
 const Redux = () => {
   return (
     <div>
-      <ModalWUsers />
-      <hr />
       <TodoList />
+      <ModalWUsers />
     </div>
   );
 };

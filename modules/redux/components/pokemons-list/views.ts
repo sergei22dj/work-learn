@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   display: flex;
+  flex-direction: column;
+  align-items: center;
   height: 700px;
 `;
 export const Header = styled.div`
@@ -22,10 +24,9 @@ export const UserListWrapper = styled.div`
 `;
 export const ControlPanel = styled.div`
   display: flex;
-  flex-direction: column;
   padding-top: 100px;
 `;
-export const ControlItem = styled.div`
+export const ControlItem = styled.button`
   display: flex;
   width: 200px;
   height: 50px;
@@ -41,6 +42,10 @@ export const ControlItem = styled.div`
 
   &:hover {
     background-color: #7fc7f1;
+  }
+  &:disabled {
+    background-color: #9fc2d7;
+    cursor: no-drop;
   }
 `;
 export const ActionBar = styled.div`
@@ -75,9 +80,10 @@ export const Info = styled.div`
 `;
 export const UserItem = styled.div`
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: space-between;
   margin: 20px 0;
-  border-bottom: 1px solid white;
 `;
 
 export const DeleteButton = styled.div`
@@ -96,5 +102,32 @@ export const DeleteButton = styled.div`
 
   &:hover {
     background-color: #d52424;
+  }
+`;
+export const Image = styled.img`
+  width: 135px;
+  height: 200px;
+  border: 2px solid #a166ab;
+  border-radius: 78px 78px 0px 0px;
+  background-size: 300% 300%;
+  background-image: linear-gradient(
+    -45deg,
+    rgba(59, 173, 227, 1) 0%,
+    rgba(87, 111, 230, 1) 25%,
+    rgba(152, 68, 183, 1) 51%,
+    rgba(255, 53, 127, 1) 100%
+  );
+  animation: AnimateBG 1s ease infinite;
+
+  @keyframes AnimateBG {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
   }
 `;

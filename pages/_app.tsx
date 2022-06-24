@@ -16,7 +16,9 @@ import { cookiesManager } from '@md-managers/cookies';
 // global css
 import 'normalize.css/normalize.css';
 import { Provider } from 'react-redux';
-import { store } from 'redux-store';
+import { setupStore } from 'redux-store';
+
+const store = setupStore();
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   const { getToken } = cookiesManager();
