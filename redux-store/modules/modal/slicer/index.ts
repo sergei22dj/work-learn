@@ -20,11 +20,8 @@ export const modalSlice = createSlice({
   name: 'modal',
   initialState,
   reducers: {
-    closeModal(state) {
-      state.activeModal = false;
-    },
     openModal(state) {
-      state.activeModal = true;
+      state.activeModal ? (state.activeModal = false) : (state.activeModal = true);
     }
   }
 });

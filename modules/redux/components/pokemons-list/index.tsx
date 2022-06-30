@@ -1,18 +1,7 @@
 import React, { useEffect, useState } from 'react';
 // hooks
 // views
-import {
-  ActionBar,
-  ControlItem,
-  ControlPanel,
-  Description,
-  Header,
-  Image,
-  Info,
-  UserItem,
-  UserListWrapper,
-  Wrapper
-} from './views';
+import { ControlItem, ControlPanel, Header, Image, Title, UserItem, UserListWrapper, Wrapper } from './views';
 import { useAppSelector } from '@md-modules/shared/hooks/use-app-selector';
 import { useAppDispatch } from '@md-modules/shared/hooks/use-app-dispatch';
 import { fetchPokemons } from 'redux-store/modules/pokemons/action-creator';
@@ -29,31 +18,20 @@ const UserList: React.FC = () => {
   return (
     <Wrapper>
       <UserListWrapper>
-        <Header>Squad</Header>
+        <Header>CHOOSE YOUR POKEMON</Header>
 
         <div>
           <div>
             <UserItem>
-              {pokeID} - {users.name}
+              <Title>{users.name}</Title>
               <Image src={users.sprites.front_default} />
-              <ActionBar>
-                <Info>
-                  ?
-                  <Description>
-                    Planet -
-                    <br />
-                    Profession -
-                    <br />
-                  </Description>
-                </Info>
-              </ActionBar>
             </UserItem>
           </div>
         </div>
       </UserListWrapper>
       <ControlPanel>
         <ControlItem disabled={pokeID === 1} onClick={() => setPokeID((prev) => prev - 1)}>
-          back
+          previous
         </ControlItem>
         <ControlItem onClick={() => setPokeID((prev) => prev + 1)}>next</ControlItem>
       </ControlPanel>

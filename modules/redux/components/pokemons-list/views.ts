@@ -8,6 +8,7 @@ export const Wrapper = styled.div`
 `;
 export const Header = styled.div`
   height: 100px;
+  text-align: center;
   display: flex;
   align-items: center;
   color: white;
@@ -78,6 +79,14 @@ export const Info = styled.div`
     z-index: 9999;
   }
 `;
+
+export const Title = styled.p`
+  font-size: 46px;
+  color: #1098ad;
+  text-transform: uppercase;
+  letter-spacing: 12px;
+`;
+
 export const UserItem = styled.div`
   display: flex;
   flex-direction: column;
@@ -105,10 +114,10 @@ export const DeleteButton = styled.div`
   }
 `;
 export const Image = styled.img`
-  width: 135px;
-  height: 200px;
+  width: 208px;
+  height: 230px;
   border: 2px solid #a166ab;
-  border-radius: 78px 78px 0px 0px;
+  border-radius: 78px 78px;
   background-size: 300% 300%;
   background-image: linear-gradient(
     -45deg,
