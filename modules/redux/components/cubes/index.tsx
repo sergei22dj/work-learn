@@ -4,11 +4,9 @@ import {
   AreaWrapper,
   ButtonAdd,
   ButtonDelete,
-  ContainerClm,
   ContainerStr,
   Cube,
   CubesWrapper,
-  DeleteColumnButtons,
   DeleteStringButtons,
   TestC,
   Wrapper
@@ -37,15 +35,10 @@ const Cubes = () => {
 
   const [cubes, setCubes] = useState([Array(column * string).fill('')]);
 
-  const [stringDeleteBtn, setStringDeleteBtn] = useState([Array(string).fill('-')]);
-  const [columnDeleteBtn, setColumnDeleteBtn] = useState([Array(column).fill('-')]);
-
   const [show, setShow] = useState(0);
 
   useEffect(() => {
     setCubes([Array(column * string).fill('')]);
-    setStringDeleteBtn([Array(string).fill('-')]);
-    setColumnDeleteBtn([Array(column).fill('-')]);
   }, [string, column]);
 
   const addColumn = () => {
@@ -71,16 +64,6 @@ const Cubes = () => {
       </TestC>
 
       <AreaWrapper>
-        <DeleteStringButtons>
-          {stringDeleteBtn[0].map((btn, index) => (
-            <ContainerStr key={index}>
-              <ButtonDelete disabled={string < 2} onClick={() => deleteString()}>
-                {btn}
-              </ButtonDelete>
-            </ContainerStr>
-          ))}
-        </DeleteStringButtons>
-
         <CubesWrapper strings={string} columns={column}>
           {cubes[0].map((cubes, index) => (
             <Cube onMouseEnter={() => setShow(index)} key={index}>
@@ -99,6 +82,7 @@ const Cubes = () => {
         <ButtonAdd disabled={string > 9} onClick={() => addString()}>
           +
         </ButtonAdd>
+        <ButtonDelete disabled={column < 2} onClick={() => deleteString()}></ButtonDelete>
       </AddStringButtons>
     </Wrapper>
   );
