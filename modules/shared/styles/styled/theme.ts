@@ -15,6 +15,7 @@ export const colors = {
   // red
   red500: '#ff294b',
   // other
+  blackBg: '#212121',
   white: '#fff'
 };
 
