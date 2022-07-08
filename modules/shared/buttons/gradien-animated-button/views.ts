@@ -27,6 +27,7 @@ export const Button = styled.button`
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
     border-radius: 10px;
+    opacity: 1;
   }
 
   :active {

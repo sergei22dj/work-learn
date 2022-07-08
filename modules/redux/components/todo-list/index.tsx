@@ -16,6 +16,7 @@ import { useAppDispatch } from '@md-modules/shared/hooks/use-app-dispatch';
 
 const TodoList: React.FC = () => {
   const { page } = useAppSelector((state) => state.todoReducer);
+  const { activeModal } = useAppSelector((state) => state.modalReducer);
   const { data: todos, isError, isLoading } = todosAPI.useGetAllTodosQuery({ limit: 10, page: page });
   const { openModal } = modalSlice.actions;
   const { setTodoPage } = todoSlice.actions;
@@ -42,11 +43,10 @@ const TodoList: React.FC = () => {
   const Error = () => {
     return <Header>Ошибка :( {isError}</Header>;
   };
-
   return (
     <Wrapper>
       <ButtonWrapper>
-        <Button onClick={() => dispatch(openModal())}>open modal</Button>
+        <Button onClick={() => dispatch(openModal())}>{activeModal ? 'close' : 'pokemons'}</Button>
       </ButtonWrapper>
 
       {isError ? (

@@ -11,10 +11,10 @@ import { modalSlice } from 'redux-store/modules/modal/slicer';
 
 const ModalWUsers = () => {
   const { activeModal } = useAppSelector((state) => state.modalReducer);
-  const { closeModal } = modalSlice.actions;
+  const { openModal } = modalSlice.actions;
   const dispatch = useAppDispatch();
   return (
-    <Wrapper activeModal={activeModal} onClick={() => dispatch(closeModal())}>
+    <Wrapper activeModal={activeModal} onClick={() => dispatch(openModal())}>
       <Content activeModal={activeModal} onClick={(e) => e.stopPropagation()}>
         <GradientBorder>
           <UserList />

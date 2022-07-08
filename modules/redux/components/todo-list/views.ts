@@ -10,6 +10,7 @@ export const Wrapper = styled.div`
 export const ButtonWrapper = styled.div`
   display: flex;
   width: 100%;
+  z-index: 1000000;
 `;
 
 export const TodoWrapper = styled.div`
