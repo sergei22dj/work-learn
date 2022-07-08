@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { columnPadding, stringPadding } from './helpers';
 
 export const Wrapper = styled.div`
     margin-top: 150px;
@@ -40,9 +41,13 @@ export const Cube = styled.div`
 export const AreaWrapper = styled.div`
     display: flex;
 `;
-export const AddStringButtons = styled.div`
+export const AddColumnButtons = styled.div`
     display: flex;
     flex-direction: column;
+`;
+export const AddStringButtons = styled.div`
+margin-left: 52px;
+    display: flex;
 `;
 export const ButtonAdd = styled.button`
     background-color: #9be79b;
@@ -70,6 +75,10 @@ export const ButtonDelete = styled.button`
         cursor: not-allowed;
     }
 `;
+export const ContainerArea = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
 export const ContainerStr = styled.div`
     opacity: 0.5;
 `;
@@ -79,7 +88,14 @@ export const ContainerClm = styled.div`
         opacity: 1;
     }
 `;
-export const TestC = styled.div<{columns: number, margin: number}>`
+export const TestC = styled.div<{columns: number, show: number}>`
+    opacity: ${({ show }) => `${show === 1000 ? '0' : '1'}`};
     width: ${({ columns }) => `${columns * 52}px`};
-    padding-left: ${({ margin }) => `${margin * 20}px`};
+    padding-left: ${({ columns, show }) => `calc(52px + ${columnPadding(show, columns)}px)`};
+`;
+export const TestS = styled.div<{strings: number, columns: number, show: number}>`
+    opacity: ${({ show }) => `${show === 1000 ? '0' : '1'}`};
+    height: ${({ strings }) => `${strings * 52}px`};
+    padding-top:${({ strings, columns, show }) => `${stringPadding(show, columns, strings)}px`};
+    
 `;

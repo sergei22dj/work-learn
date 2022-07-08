@@ -1,14 +1,15 @@
 import { useEffect, useState } from 'react';
 import {
+  AddColumnButtons,
   AddStringButtons,
   AreaWrapper,
   ButtonAdd,
   ButtonDelete,
-  ContainerStr,
+  ContainerArea,
   Cube,
   CubesWrapper,
-  DeleteStringButtons,
   TestC,
+  TestS,
   Wrapper
 } from './views';
 /*  <DeleteColumnButtons strings={string}>
@@ -56,34 +57,44 @@ const Cubes = () => {
   const deleteString = () => {
     setString((prev) => prev - 1);
   };
-  console.log(show);
+  console.log('columns : ', column);
+  console.log('show : ', show);
+  console.log('math : ', Math.floor(show / column));
   return (
     <Wrapper>
-      <TestC columns={column} margin={show}>
-        <ButtonDelete disabled={column < 2} onClick={() => deleteColumn()}></ButtonDelete>
-      </TestC>
+      <ContainerArea onMouseLeave={() => setShow(1000)}>
+        <TestC columns={column} show={show}>
+          <ButtonDelete disabled={column < 2} onClick={() => deleteColumn()}>
+            -
+          </ButtonDelete>
+        </TestC>
 
-      <AreaWrapper>
-        <CubesWrapper strings={string} columns={column}>
-          {cubes[0].map((cubes, index) => (
-            <Cube onMouseEnter={() => setShow(index)} key={index}>
-              {cubes}
-            </Cube>
-          ))}
-        </CubesWrapper>
+        <AreaWrapper>
+          <TestS strings={string} columns={column} show={show}>
+            <ButtonDelete disabled={string < 2} onClick={() => deleteString()}>
+              -
+            </ButtonDelete>
+          </TestS>
+          <CubesWrapper strings={string} columns={column}>
+            {cubes[0].map((cubes, index) => (
+              <Cube onMouseEnter={() => setShow(index)} key={index}>
+                {cubes}
+              </Cube>
+            ))}
+          </CubesWrapper>
 
+          <AddColumnButtons>
+            <ButtonAdd disabled={column > 12} onClick={() => addColumn()}>
+              +
+            </ButtonAdd>
+          </AddColumnButtons>
+        </AreaWrapper>
         <AddStringButtons>
-          <ButtonAdd disabled={column > 12} onClick={() => addColumn()}>
+          <ButtonAdd disabled={string > 9} onClick={() => addString()}>
             +
           </ButtonAdd>
         </AddStringButtons>
-      </AreaWrapper>
-      <AddStringButtons>
-        <ButtonAdd disabled={string > 9} onClick={() => addString()}>
-          +
-        </ButtonAdd>
-        <ButtonDelete disabled={column < 2} onClick={() => deleteString()}></ButtonDelete>
-      </AddStringButtons>
+      </ContainerArea>
     </Wrapper>
   );
 };
