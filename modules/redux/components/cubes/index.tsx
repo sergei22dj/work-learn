@@ -10,8 +10,7 @@ import {
   CubesWrapper,
   DeleteColumnButtons,
   DeleteStringButtons,
-  Test,
-  Test2,
+  TestC,
   Wrapper
 } from './views';
 /*  <DeleteColumnButtons strings={string}>
@@ -41,6 +40,8 @@ const Cubes = () => {
   const [stringDeleteBtn, setStringDeleteBtn] = useState([Array(string).fill('-')]);
   const [columnDeleteBtn, setColumnDeleteBtn] = useState([Array(column).fill('-')]);
 
+  const [show, setShow] = useState(0);
+
   useEffect(() => {
     setCubes([Array(column * string).fill('')]);
     setStringDeleteBtn([Array(string).fill('-')]);
@@ -62,9 +63,13 @@ const Cubes = () => {
   const deleteString = () => {
     setString((prev) => prev - 1);
   };
-
+  console.log(show);
   return (
     <Wrapper>
+      <TestC columns={column} margin={show}>
+        <ButtonDelete disabled={column < 2} onClick={() => deleteColumn()}></ButtonDelete>
+      </TestC>
+
       <AreaWrapper>
         <DeleteStringButtons>
           {stringDeleteBtn[0].map((btn, index) => (
@@ -75,18 +80,12 @@ const Cubes = () => {
             </ContainerStr>
           ))}
         </DeleteStringButtons>
-        <DeleteColumnButtons>
-          {columnDeleteBtn[0].map((btn, index) => (
-            <ContainerClm key={index}>
-              <ButtonDelete disabled={column < 2} onClick={() => deleteColumn()}>
-                {btn}
-              </ButtonDelete>
-            </ContainerClm>
-          ))}
-        </DeleteColumnButtons>
+
         <CubesWrapper strings={string} columns={column}>
           {cubes[0].map((cubes, index) => (
-            <Cube key={index}>{cubes}</Cube>
+            <Cube onMouseEnter={() => setShow(index)} key={index}>
+              {cubes}
+            </Cube>
           ))}
         </CubesWrapper>
 

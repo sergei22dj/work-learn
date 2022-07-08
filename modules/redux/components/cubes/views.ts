@@ -79,3 +79,7 @@ export const ContainerClm = styled.div`
         opacity: 1;
     }
 `;
+export const TestC = styled.div<{columns: number, margin: number}>`
+    width: ${({ columns }) => `${columns * 52}px`};
+    padding-left: ${({ margin }) => `${margin * 20}px`};
+`;

@@ -53,11 +53,13 @@ export const CardImg = styled.img`
 `;
 export const CardTitle = styled.div`
     margin-bottom: 16px;
+    line-height: 32px;
     font-size: 20px;
     font-weight: 500;
 `;
 export const CardDescription = styled.div`
     font-size: 10px;
+    line-height: 16px;
 `;
 
 // Button ============================
