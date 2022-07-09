@@ -1,42 +1,27 @@
+// hooks
 import { useEffect, useState } from 'react';
+// views
 import {
-  AddColumnButtons,
-  AddStringButtons,
+  AddColumnButtonContainer,
+  AddStringButtonContainer,
   AreaWrapper,
   ButtonAdd,
   ButtonDelete,
   ContainerArea,
   Cube,
   CubesWrapper,
-  TestC,
-  TestS,
+  DelColumnBtnContainer,
+  DelStringBtnContainer,
   Wrapper
 } from './views';
-/*  <DeleteColumnButtons strings={string}>
-{columnDeleteBtn[0].map((btn, index) => (
-  <ContainerClm key={index}>
-    <ButtonDelete disabled={column < 2} onClick={() => deleteColumn()}>
-      {btn}
-    </ButtonDelete>
-  </ContainerClm>
-))}
-</DeleteColumnButtons>
-<DeleteStringButtons columns={column}>
-          {stringDeleteBtn[0].map((btn, index) => (
-            <ContainerStr key={index}>
-              <ButtonDelete disabled={string < 2} onClick={() => deleteString()}>
-                {btn}
-              </ButtonDelete>
-            </ContainerStr>
-          ))}
-        </DeleteStringButtons> */
+
 const Cubes = () => {
   const [string, setString] = useState(2);
   const [column, setColumn] = useState(2);
 
   const [cubes, setCubes] = useState([Array(column * string).fill('')]);
 
-  const [show, setShow] = useState(0);
+  const [cubeIndex, setCubeIndex] = useState(0);
 
   useEffect(() => {
     setCubes([Array(column * string).fill('')]);
@@ -57,43 +42,37 @@ const Cubes = () => {
   const deleteString = () => {
     setString((prev) => prev - 1);
   };
-  console.log('columns : ', column);
-  console.log('show : ', show);
-  console.log('math : ', Math.floor(show / column));
+
   return (
     <Wrapper>
-      <ContainerArea onMouseLeave={() => setShow(1000)}>
-        <TestC columns={column} show={show}>
-          <ButtonDelete disabled={column < 2} onClick={() => deleteColumn()}>
+      <ContainerArea onMouseLeave={() => setCubeIndex(0.1)}>
+        <DelColumnBtnContainer columns={column} cubeIndex={cubeIndex}>
+          <ButtonDelete disabled={column < 3 || cubeIndex === 0.1} onClick={deleteColumn}>
             -
           </ButtonDelete>
-        </TestC>
+        </DelColumnBtnContainer>
 
         <AreaWrapper>
-          <TestS strings={string} columns={column} show={show}>
-            <ButtonDelete disabled={string < 2} onClick={() => deleteString()}>
+          <DelStringBtnContainer strings={string} columns={column} cubeIndex={cubeIndex}>
+            <ButtonDelete disabled={string < 3 || cubeIndex === 0.1} onClick={deleteString}>
               -
             </ButtonDelete>
-          </TestS>
+          </DelStringBtnContainer>
           <CubesWrapper strings={string} columns={column}>
             {cubes[0].map((cubes, index) => (
-              <Cube onMouseEnter={() => setShow(index)} key={index}>
+              <Cube onMouseEnter={() => setCubeIndex(index)} key={index}>
                 {cubes}
               </Cube>
             ))}
           </CubesWrapper>
 
-          <AddColumnButtons>
-            <ButtonAdd disabled={column > 12} onClick={() => addColumn()}>
-              +
-            </ButtonAdd>
-          </AddColumnButtons>
+          <AddColumnButtonContainer>
+            <ButtonAdd onClick={addColumn}>+</ButtonAdd>
+          </AddColumnButtonContainer>
         </AreaWrapper>
-        <AddStringButtons>
-          <ButtonAdd disabled={string > 9} onClick={() => addString()}>
-            +
-          </ButtonAdd>
-        </AddStringButtons>
+        <AddStringButtonContainer>
+          <ButtonAdd onClick={addString}>+</ButtonAdd>
+        </AddStringButtonContainer>
       </ContainerArea>
     </Wrapper>
   );

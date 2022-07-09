@@ -3,63 +3,67 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 100%;
+    min-height: 100vh;
+    max-height: 100%;
     background-color: ${({ theme }) => theme.colors.blackBg};
-    padding: 34px;
-    @media (max-width: 712px){
-        flex-direction: column-reverse;
-  }
+    padding: 68px;
+    @media (max-width: 1612px){
+        flex-direction: column-reverse;  
+    }
+    @media (max-width: 600px){
+        display: none;
+    }
 `;
-export const CardWrapper = styled.div`
+export const CardLWrapper = styled.div`
     display: flex;
+    max-width: 808px;
     flex-direction: column;
     align-items: center;
+    margin: 0 20px;
+    @media (max-width: 1612px){
+        max-width: 808px;
+        min-width: 580px;
+  }
+    
 `;
-// Card ======================
-export const Card = styled.div`
-    width: 100%;
-    max-width: 404px;
-    margin: 10px;
-    padding: 16px 100px 16px 12px;
-    border-radius: 12px;
-    background-color: ${({ theme }) => theme.colors.white};
-    display: flex;
-    @media (max-width: 712px){
-        padding: 16px 34px 16px 12px;
+export const CardRWrapper = styled(CardLWrapper)`
+    max-width: 604px;
+    @media (max-width: 1612px){
+        max-width: 808px;
   }
 `;
-export const CardSmall = styled.div`
+// Card ======================
+export const Card = styled.div<{small?: boolean}>`
     width: 100%;
-    max-width: 300px;
-    margin: 10px;
-    padding: 16px 43px 16px 12px;
+    margin-bottom: 20px;
+    padding: ${({ small }) => `${small ? '32px 80px 32px 24px' : '32px 200px 32px 24px'}`};
     border-radius: 12px;
     background-color: ${({ theme }) => theme.colors.white};
     display: flex;
-
-    @media (max-width: 712px){
-        max-width: 404px;
-        padding: 16px 12px 16px 12px;
+    @media (max-width: 1612px){
+        padding: 32px 34px 32px 24px;
   }
 `;
 export const CardText = styled.div`
     display: flex;
     flex-direction: column;
-    margin-left: 16px;
+    margin-left: 32px;
 `;
 export const CardImg = styled.img`
-    height: 30px;
-    width: 30px;
+    height: 60px;
+    width: 60px;
 `;
 export const CardTitle = styled.div`
-    margin-bottom: 16px;
-    line-height: 32px;
-    font-size: 20px;
+    margin-bottom: 32px;
+    line-height: 64px;
+    font-size: 40px;
     font-weight: 500;
 `;
 export const CardDescription = styled.div`
-    font-size: 10px;
-    line-height: 16px;
+    font-size: 20px;
+    line-height: 32px;
 `;
 
 // Button ============================
@@ -68,10 +72,20 @@ export const Button = styled.div`
     align-items: center;
     justify-content: center;
     background-color: white;
-    height: 40px;
+    height: 81px;
     width: 100%;
     border-radius: 12px;
-    max-width: 226px;
-    font-size: 10px;
+    max-width: 451px;
+    font-size: 20px;
     cursor: pointer;
+`;
+// Error Meassage =======
+export const ErrorMessage = styled.div`
+    text-align: center;
+    padding: 0 20px;
+    font-size: 60px;
+    display: none;
+    @media (max-width: 600px){  
+        display: block;
+  }
 `;

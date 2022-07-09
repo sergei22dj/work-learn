@@ -2,27 +2,23 @@ import styled from 'styled-components';
 import { columnPadding, stringPadding } from './helpers';
 
 export const Wrapper = styled.div`
-    margin-top: 150px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    background-color: bisque;
+    justify-content: flex-start;
+    background-color: blanchedalmond;
+    height: 100vh;
+`;
+export const ContainerArea = styled.div`
+    display: flex;
+    flex-direction: column;
 `;
 export const CubesWrapper = styled.div<{columns : number, strings: number}>`
-    background-color: blanchedalmond;
     display: grid;
     grid-template-columns: ${({ columns }) => `repeat(${columns}, 1fr)`};
     grid-template-rows: ${({ strings }) => `repeat(${strings}, 1fr)`};
     grid-column-gap: 0px;
     grid-row-gap: 0px;
-`;
-export const DeleteColumnButtons = styled.div`
-    display: flex;
-`;
-export const DeleteStringButtons = styled.div`
-    display: flex;
-    flex-direction: column;
 `;
 export const Cube = styled.div`
     display: flex;
@@ -33,22 +29,19 @@ export const Cube = styled.div`
     background-color: #9e9ef5;
     width: 50px;
     height: 50px;
+    transition: 0.3s;
     &:hover{
         border: 1px solid white;
+        background-color: #bebef1;
+        transition: 0s;
 
     }
 `;
 export const AreaWrapper = styled.div`
     display: flex;
 `;
-export const AddColumnButtons = styled.div`
-    display: flex;
-    flex-direction: column;
-`;
-export const AddStringButtons = styled.div`
-margin-left: 52px;
-    display: flex;
-`;
+// Buttons \/====================\/
+
 export const ButtonAdd = styled.button`
     background-color: #9be79b;
     width: 50px;
@@ -59,7 +52,7 @@ export const ButtonAdd = styled.button`
         border: 1px solid white;
     }
     &:disabled{
-        cursor: not-allowed;
+       opacity: 0;
     }
 `;
 export const ButtonDelete = styled.button`
@@ -72,30 +65,29 @@ export const ButtonDelete = styled.button`
         border: 1px solid white;
     }
     &:disabled{
-        cursor: not-allowed;
+        opacity: 0;
     }
 `;
-export const ContainerArea = styled.div`
+// Container for Add Buttons \/=============\/
+
+export const AddColumnButtonContainer = styled.div`
     display: flex;
     flex-direction: column;
 `;
-export const ContainerStr = styled.div`
-    opacity: 0.5;
+export const AddStringButtonContainer = styled.div`
+margin-left: 52px;
+    display: flex;
 `;
-export const ContainerClm = styled.div`
-    opacity: 0.5;
-    &:hover {
-        opacity: 1;
-    }
-`;
-export const TestC = styled.div<{columns: number, show: number}>`
-    opacity: ${({ show }) => `${show === 1000 ? '0' : '1'}`};
+// Containers for Delete Buttons \/===============\/
+
+export const DelColumnBtnContainer = styled.div<{columns: number, cubeIndex: number}>`
+    opacity: ${({ cubeIndex }) => `${cubeIndex === 0.1 ? '0' : '1'}`};
     width: ${({ columns }) => `${columns * 52}px`};
-    padding-left: ${({ columns, show }) => `calc(52px + ${columnPadding(show, columns)}px)`};
+    padding-left: ${({ columns, cubeIndex }) => `calc(52px + ${columnPadding(cubeIndex, columns)}px)`};
 `;
-export const TestS = styled.div<{strings: number, columns: number, show: number}>`
-    opacity: ${({ show }) => `${show === 1000 ? '0' : '1'}`};
+export const DelStringBtnContainer = styled.div<{strings: number, columns: number, cubeIndex: number}>`
+    opacity: ${({ cubeIndex }) => `${cubeIndex === 0.1 ? '0' : '1'}`};
     height: ${({ strings }) => `${strings * 52}px`};
-    padding-top:${({ strings, columns, show }) => `${stringPadding(show, columns, strings)}px`};
+    padding-top:${({ strings, columns, cubeIndex }) => `${stringPadding(cubeIndex, columns, strings)}px`};
     
 `;
