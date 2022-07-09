@@ -29,7 +29,7 @@ export const Cube = styled.div`
     background-color: #9e9ef5;
     width: 50px;
     height: 50px;
-    transition: 0.3s;
+    transition: 0.4s;
     &:hover{
         border: 1px solid white;
         background-color: #bebef1;
